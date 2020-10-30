@@ -1,0 +1,46 @@
+ {% extends 'base.html' %}
+{% block content %}
+ {% load static %}
+	<div class="login">
+	
+		<div class="main-agileits">
+				<div class="form-w3agile">
+					<h3>Register</h3>
+					<form action="register" method="post">
+						{% csrf_token %}
+						<div class="key">
+							<i class="fa fa-user" aria-hidden="true"></i>
+							<input  type="text"  name="username" required=""  placeholder="Username">
+							<div class="clearfix"></div>
+						</div>
+<!--						<div class="key">-->
+<!--							<i class="fa fa-mobile-phone" aria-hidden="true"></i>-->
+<!--							<input  type="text"  name="mobile" required=""  placeholder="Mobile Number">-->
+<!--							<div class="clearfix"></div>-->
+<!--						</div>-->
+						<div class="key">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+							<input  type="text"  name="email"  required=""  placeholder="Email">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+							<input  type="password"  name="password1"  required="" placeholder="Password">
+							<div class="clearfix"></div>
+						</div>
+						<div class="key">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+							<input  type="password" name="password2" required="" placeholder="Confirm Password">
+							<div class="clearfix"></div>
+						</div>
+						<input type="submit" value="Register">
+					</form>
+				</div>
+			{% for message in messages %}
+			<div class="error_messages">
+				<h4>{{message}}</h4>
+			</div>
+		{% endfor %}
+			</div>
+		</div>
+ {% endblock %}
