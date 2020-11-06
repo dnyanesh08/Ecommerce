@@ -87,9 +87,7 @@ DATABASES = {
         'NAME': 'ECommerce',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',
-        'PASSWORD': 'Softtrust@786',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'PASSWORD': 'Softtrust@786'
 
     }
 }
