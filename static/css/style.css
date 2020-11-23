@@ -484,6 +484,7 @@ ul.resp-tabs-list li:nth-child(3):after{
 }
 .top-product-grids,.women-grids{
 	text-align:center;
+	padding-top:20px;
 }
 .product-img{
 	position:relative;
