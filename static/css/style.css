@@ -2132,17 +2132,17 @@ p.w3-agile{
 		float: left;
 	}
 	.bb-left-agileits-w3layouts-inner {
-		background: url(../images/bb1.jpg) no-repeat -142px 0px;
+		background: url(../images/1.jpg) no-repeat -142px 0px;
 		background-size: cover;
 		min-height: 450px;
 	}
 	.bb-middle-top {
-		background: url(../images/bb2.jpg) no-repeat -81px 0px;
+		background: url(../images/6.jpg) no-repeat -81px 0px;
 		background-size: cover;
 		min-height: 210px;
 	}
 	.bb-middle-bottom {
-		background: url(../images/bb4.jpg) no-repeat -99px 0px;
+		background: url(../images/8.jpg) no-repeat -99px 0px;
 		background-size: cover;
 		min-height: 210px;
 	}
@@ -2150,7 +2150,7 @@ p.w3-agile{
 		min-height: 210px;
 	}
 	.bb-right-bottom {
-		background: url(../images/bb5.jpg) no-repeat -56px 0px;
+		background: url(../images/9.jpg) no-repeat -56px 0px;
 		background-size: cover;
 		min-height: 210px;
 	}
@@ -2714,7 +2714,7 @@ p.w3-agile{
 		margin-bottom:30px;
 	}
 	.bb-left-agileits-w3layouts-inner {
-		background: url(../images/bb1.jpg) no-repeat 0px 0px;
+		background: url(../images/1.jpg) no-repeat 0px 0px;
 		background-size: cover;
 		min-height: 300px;
 	}
@@ -2728,12 +2728,12 @@ p.w3-agile{
 		float: left;
 	}
 	.bb-middle-top {
-		background: url(../images/bb2.jpg) no-repeat 0px 0px;
+		background: url(../images/6.jpg) no-repeat 0px 0px;
 		background-size: cover;
 		min-height: 200px;
 	}
 	.bb-middle-bottom {
-		background: url(../images/bb4.jpg) no-repeat 0px 0px;
+		background: url(../images/8.jpg) no-repeat 0px 0px;
 		background-size: cover;
 		min-height: 200px;
 	}
@@ -2741,7 +2741,7 @@ p.w3-agile{
 		min-height: 200px;
 	}
 	.bb-right-bottom {
-		background: url(../images/bb5.jpg) no-repeat 0px 0px;
+		background: url(../images/9.jpg) no-repeat 0px 0px;
 		background-size: cover;
 		min-height: 200px;
 	}
