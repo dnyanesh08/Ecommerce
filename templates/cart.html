@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+ {% load static %}
+
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container bootstrap snippets bootdey">
+    <div class="col-md-9 col-sm-8 content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info panel-shadow">
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for item in items %}
+                                <tr>
+                                    <td><img src="https://via.placeholder.com/400x200/FFB6C1/000000" class="img-cart"></td>
+                                    <td><strong>{{item.product.name}}</strong></td>
+                                    <td>Rs. {{item.product.price}}</td>
+                                    <td>
+                                    <form class="form-inline">
+                                        <input class="form-control" type="text" value="{{item.quantity}}">
+                                        <button rel="tooltip" class="btn btn-default"><i class="fa fa-pencil"></i></button>
+                                        <a href="#" class="btn btn-primary"><i class="fa fa-trash-o"></i></a>
+                                    </form>
+                                    </td>
+                                    <td>Rs. {{item.get_total}}</td>
+                                </tr>
+                                 {% endfor %}
+                                <tr>
+                                    <td colspan="6">&nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="4" class="text-right"><strong>Total</strong></td>
+                                    <td>Rs. {{order.get_cart_total}}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                </div>
+                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Continue Shopping</a>
+                <a href="#" class="btn btn-primary pull-right">Checkout<span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

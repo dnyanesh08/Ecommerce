@@ -2,11 +2,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Fashion Club an Ecommerce Online Shopping Category  Flat Bootstrap responsive Website Template | Home :: w3layouts</title>
+<title>Trendz Make</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Fashion Club Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="text/javascript">
+	var user = '{{request.user}}'
+
+	function getToken(name) {
+		var cookieValue = null;
+		if (document.cookie && document.cookie !== ''){
+			var cookies = document.cookie.split(';');
+			for (var i = 0; i < cookies.length; i++){
+				var cookie = cookies[i].trim();
+				if (cookie.substring(0, name.length + 1) === (name + '=')) {
+					cookieValue = decodeURIComponent(cookie.substring(
+						name.length + 1));
+				break;
+				}
+			}
+		}
+		return cookieValue;
+	}
+	var csrftoken = getToken('csrftoken');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- css -->
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
@@ -40,12 +61,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="header-top-w3layouts">
 	<div class="container">
 		<div class="col-md-4 logo-w3">
-			<a href="index.html"><img src="{% static 'images/logo2.png' %}" alt=" " /><h1>FASHION<span>CLUB</span></h1></a>
+			<a href="/"><img src="{% static 'images/logo2.png' %}" alt=" " /><h1>TRENDZ<span>Make</span></h1></a>
 		</div>
 		<div class="col-md-8 phone-w3l">
 			<ul>
 				<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
-				<li>+18045403380</li>
+				<li>+917507473366</li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>
@@ -136,12 +157,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="col-md-1 cart-wthree">
 			<div class="cart">
-				<form action="#" method="post" class="last">
-					<input type="hidden" name="cmd" value="_cart" />
-					<input type="hidden" name="display" value="1" />
-					<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-				</form>
+<!--				<form action="#" method="post" class="last">-->
+<!--					{% csrf_token %}-->
+<!--					<input type="hidden" name="cmd" value="_cart" />-->
+<!--					<input type="hidden" name="display" value="1" />-->
+<!--					<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>-->
+<!--				</form>-->
+				<a href="/cart.html">
+<!--				  <span class="glyphicon glyphicon-shopping-cart "></span>-->
+					<img  src="{% static 'images/cart.png' %}" alt=" " />
+				</a>
 			</div>
+
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -153,27 +180,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="footer">
 	<div class="container">
 		<div class="clearfix"></div>
-		<p class="copy-right">© 2016 Fashion Club . All rights reserved | Design by <a href="http://w3layouts.com"> W3layouts.</a></p>
+		<p class="copy-right">© 2020 Trendz Make . All rights reserved | </a></p>
 	</div>
 </div>
 	<!-- cart-js -->
-	<script src="{% static 'js/minicart.js' %}"></script>
-	<script>
-        w3ls1.render();
+<!--	<script src="{% static 'js/minicart.js' %}"></script>-->
+<!--	<script>-->
+<!--        w3ls1.render();-->
 
-        w3ls1.cart.on('w3sb1_checkout', function (evt) {
-        	var items, len, i;
+<!--        w3ls1.cart.on('w3sb1_checkout', function (evt) {-->
+<!--        	var items, len, i;-->
 
-        	if (this.subtotal() > 0) {
-        		items = this.items();
+<!--        	if (this.subtotal() > 0) {-->
+<!--        		items = this.items();-->
 
-        		for (i = 0, len = items.length; i < len; i++) {
-        			items[i].set('shipping', 0);
-        			items[i].set('shipping2', 0);
-        		}
-        	}
-        });
-    </script>
+<!--        		for (i = 0, len = items.length; i < len; i++) {-->
+<!--        			items[i].set('shipping', 0);-->
+<!--        			items[i].set('shipping2', 0);-->
+<!--        		}-->
+<!--        	}-->
+<!--        });-->
+<!--    </script>-->
 	<!-- //cart-js -->
+	<script src="{% static 'js/cart.js' %}"></script>
 </body>
 </html>
