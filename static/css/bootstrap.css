@@ -1953,7 +1953,7 @@ pre code {
     width: 66.66666667%;
   }
   .col-md-7 {
-    width: 58.33333333%;
+    width: 56.33333333%;
   }
   .col-md-6 {
     width: 50%;
@@ -1971,7 +1971,7 @@ pre code {
     width: 16.66666667%;
   }
   .col-md-1 {
-    width: 8.33333333%;
+    width: 10.33333333%;
   }
   .col-md-pull-12 {
     right: 100%;
@@ -2549,8 +2549,7 @@ output {
   color: #555;
 }
 .form-control {
-  display: block;
-  width: 100%;
+  width: 48%;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;
@@ -2922,7 +2921,7 @@ select[multiple].input-lg {
   }
   .form-inline .form-control {
     display: inline-block;
-    width: auto;
+    width: 20%;
     vertical-align: middle;
   }
   .form-inline .form-control-static {
@@ -4923,7 +4922,7 @@ a.label:focus {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  background-color: #777;
+  background-color: #6ee78c;
   border-radius: 10px;
 }
 .badge:empty {

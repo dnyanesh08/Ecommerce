@@ -1,7 +1,121 @@
 {% extends 'base.html' %}
 {% block content %}
  {% load static %}
+<div class="about">
+	<div class="container">
+        <div class="about-info">
+            <div class="col-md-6 about-grids">
+             <h3 style="text-align:left; margin-bottom:30px; color:#6de78c; background-color:#f8f8f8; border-bottom: solid 2px #2c2323;">Your Cart :{{cartItems}}</h3>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for item in items %}
+                                <tr>
+                                    <td><img src="{{item.product.image.url}}" class="img-cart"></td>
+                                    <td><strong>{{item.product.name}}</strong></td>
+                                    <td>Rs. {{item.product.price}}</td>
+                                    <td>
+                                    <form>
+                                        <span class="badge badge-danger">{{item.quantity}}</span></form>
+                                    </td>
+                                    <td>Rs. {{item.get_total}}</td>
+                                </tr>
+                                 {% endfor %}
+                                <tr>
+                                    <td colspan="6">&nbsp;</td>
+                                </tr>
+
+                                <tr style="background-color:#eeeeee;">
+                                    <td colspan="4" class="text-right"><strong>Total</strong></td>
+                                    <td>Rs. {{order.get_cart_total}}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+			</div>
+			<div class="col-md-6 about-grids" id="shipping-info">
+               <div class="form">
+					<h3 style="text-align:left; margin-bottom:30px; color:#6de78c; background-color:#f8f8f8; border-bottom: solid 2px #2c2323;">Shipping At</h3>
+					<form action="" method="post" id="form" class="form">
+						{% csrf_token %}
+						<div class="form-group">
+                            <input class="form-control"  type="text"  name="username" required=""  placeholder="First Name">
+                            <input class="form-control"  type="text"  name="username" required=""  placeholder="Last Name">
+							<div class="clearfix"></div>
+						</div>
+                        <br/>
+                        <div class="form-group">
+                            <input class="form-control"  type="text"  name="email"  required=""  placeholder="Email">
+                            <input class="form-control"  type="text"  name="email"  required=""  placeholder="Mobile No.">
+							<div class="clearfix"></div>
+						</div>
+                        <br/>
+                        <div class="form-group">
+                            <input class="form-control" type="text"  name="email"  required=""  placeholder="Address1">
+                            <input class="form-control" type="text"  name="email"  required=""  placeholder="Address2">
+							<div class="clearfix"></div>
+						</div>
+                        <br/>
+                        <div class="form-group">
+                            <input class="form-control" type="text"  name="email"  required=""  placeholder="Town">
+                            <select class="form-control" >
+                              <option selected>City</option>
+                              <option value="1">Nagpur</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+							<div class="clearfix"></div>
+						</div>
+                        <br/>
+                        <div class="form-group">
+                            <select class="form-control" >
+                              <option selected>State</option>
+                              <option value="1">Maharashtra</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                            <input class="form-control" type="text"  name="email"  required=""  placeholder="Zipcode">
+                        </div>
+                        <br/>
+<!--                        <a href="/payment.html" class="btn btn-success" id="form-button" style="width:100%;">Place Order</a>-->
+                        <input type="submit" value="Place Order" class="btn btn-success" id="form-button" style="width:100%">
+					</form>
+				</div>
+                <div class="box-element hidden" id="payment-info">
+                    <h5>Choose Payment Method</h5>
+                </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!-- //about -->
+<script type="text/javascript">
+    var shipping = '{{order.shipping}}'
+
+    if(shipping == 'False'){
+        document.getElementById('shipping-info').innerHTML = ''
+    }
+
+    var form = document.getElementById('form')
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault()
+        console.log('Form Submitted...')
+        document.getElementById('form-button').classList.add('hidden')
+        document.getElementById('payment-info').classList.remove('hidden')
+    })
 
 
 
+</script>
 {% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block content %}
+ {% load static %}
+
+<div class="container bootstrap snippets bootdey">
+    <div class="col-md-12 content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-info panel-shadow">
+                    <div class="panel-body" style="width:100%;">
+                        <h3>Choose Your Payment Method</h3>
+                        <div class="payment-method" style="padding:20px; text-align:center;">
+                            <a class="btn btn-success" data-toggle="collapse" href="#upi" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                UPI
+                            </a>
+                            <a class="btn btn-success" data-toggle="collapse" href="#card-method" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Credit/Debit Card
+                            </a>
+                            </p>
+                            <div class="collapse" id="upi">
+                                <div class="card card-body">
+
+                                </div>
+                            </div>
+                            <div class="collapse" id="card-method" style="padding-top:20px;">
+                                <div class="card card-body">
+                                    <div class="form">
+                                        <h3 style="text-align:left; margin-bottom:30px; color:#6de78c; background-color:#f8f8f8; border-bottom: solid 2px #2c2323;">Card Details</h3>
+                                        <form action="" method="post" id="form" class="form">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <input class="form-control"  type="text"  name="username" required=""  placeholder="Name On Card">
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <br/>
+                                            <div class="form-group">
+                                                <div class="form-group"> <input type="text" name="cardNumber" placeholder="Valid card number" style="width:42%;" class="form-control " required>
+                                                     <span class="form-group-text text-muted"> <i class="fa fa-cc-visa mx-1"></i> <i class="fa fa-cc-mastercard mx-1"></i> <i class="fa fa-cc-amex mx-1"></i> </span>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <br/>
+                                            <div class="form-group" >
+                                                <select class="form-control" style="width:16%;" >
+                                                  <option selected>Expiry Month</option>
+                                                  <option >January</option>
+                                                  <option value="1">February</option>
+                                                  <option value="2">March</option>
+                                                  <option value="3">April</option>
+                                                    <option >May</option>
+                                                  <option value="1">June</option>
+                                                  <option value="2">July</option>
+                                                  <option value="3">August</option>
+                                                    <option >September</option>
+                                                  <option value="1">October</option>
+                                                  <option value="2">November</option>
+                                                  <option value="3">December</option>
+                                                </select>
+                                                <select class="form-control" style="width:16%;" >
+                                                    <option selected>Expiry Year</option>
+                                                  <option value="1">2023</option>
+                                                  <option value="2">2024</option>
+                                                  <option value="3">2025</option>
+                                                    <option >2026</option>
+                                                  <option value="1">2027</option>
+                                                  <option value="2">2028</option>
+                                                  <option value="3">2029</option>
+                                                    <option >2030</option>
+                                                  <option value="1">2031</option>
+                                                  <option value="2">2032</option>
+                                                  <option value="3">2033</option>
+                                                </select>
+                                                <input class="form-control" type="text"  name="email"  required=""  placeholder="CCV" style="width:16%;">
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <br/>
+                                            <a href="/payment.html" class="btn btn-success" id="form-button" style="width:100%;">Continue</a>
+                    <!--                        <input type="submit" value="Continue" class="btn btn-success" id="form-button" style="width:100%">-->
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -92,7 +92,7 @@ img {
     letter-spacing: 0;
     position: absolute;
     top: 15px;
-    left: 130px;
+    left: 150px;
 }
 .phone-w3l {
     text-align: right;
@@ -198,7 +198,7 @@ button.search {
     margin-top: 7px;
 }
 .cart-wthree img{
-    width:70%;
+    width:60%;
     height:45px;
 }
 button.w3view-cart {
@@ -1848,8 +1848,8 @@ p.single-price-text {
 
 /*-- recommended--*/
 table.table {
-    width: 100%;
-    border: 1px solid #D0D0D0;
+    width: 80%;
+    border: 1px solid #ffffff;
 }
 td.t-data {
     border: 1px solid #D2D2D2;
@@ -3220,7 +3220,7 @@ p.w3-agile{
 
 .img-cart {
     display: block;
-    max-width: 50px;
+    max-width: 100px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
