@@ -26,6 +26,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		return cookieValue;
 	}
 	var csrftoken = getToken('csrftoken');
+
+
+	function getCookie(name) {
+
+		var cookieArr = document.cookie.split(";");
+
+		for(var i = 0; i < cookieArr.length; i++){
+			var cookiePair = cookieArr[i].split("=");
+
+			if(name == cookiePair[0].trim()) {
+
+				return decodeURIComponent(cookiePair[1]);
+			}
+		}
+
+		return null;
+
+	}
+
+	var cart = JSON.parse(getCookie('cart'))
+	if(cart == undefined){
+		cart = {}
+		console.log('Cart was created!')
+		document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+
+	console.log('Cart:', cart)
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
