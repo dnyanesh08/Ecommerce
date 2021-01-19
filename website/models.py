@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, auth
 # Create your models here.
 
 class Charector(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,  null=True, blank=True)
     total = models.FloatField()
 
     def __str__(self):
