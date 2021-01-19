@@ -2,12 +2,12 @@
 {% block content %}
  {% load static %}
  <div class="banner-agile">
-	<div class="container">
-		<h2>WELCOME TO</h2>
-		<h3>TRENDZ <span>MAKE</span></h3>
-		<p>We provides creative wooden art and home decore collection </p>
-		<a href="/#">Read More</a>
-	</div>
+<!--	<div class="container">-->
+<!--		<h2>WELCOME TO</h2>-->
+<!--		<h3>TRENDZ <span>MAKE</span></h3>-->
+<!--		<p>We provides creative wooden art and home decore collection </p>-->
+<!--		<a href="/#">Read More</a>-->
+<!--	</div>-->
 </div>
 <div class="content">
 	<div class="container">
@@ -20,25 +20,11 @@
 				<div class="col-md-3 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
 					<a href="product/{{product.id}}"><div class="product-img">
 						<img src="{{product.image.url}}" alt="" />
-<!--						<div class="p-mask">-->
-<!--							<form action="#" method="post">-->
-<!--								{% csrf_token %}-->
-<!--								<input type="hidden" name="cmd" value="_cart" />-->
-<!--								<input type="hidden" name="add" value="{{product.id}}" />-->
-<!--								<input type="hidden" name="w3ls1_item" value="{{product.name}}" />-->
-<!--								<input type="hidden" name="amount" value="{{product.price}}" />-->
-<!--&lt;!&ndash;								<button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>&ndash;&gt;-->
-<!--								<button data-product={{product.id}} data-action="add" class="w3ls-cart pw3ls-cart update-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>-->
-<!--							</form>-->
-<!--						</div>-->
-					</div></a>
-<!--					<i class="fa fa-star yellow-star" aria-hidden="true"></i>-->
-<!--					<i class="fa fa-star yellow-star" aria-hidden="true"></i>-->
-<!--					<i class="fa fa-star yellow-star" aria-hidden="true"></i>-->
-<!--					<i class="fa fa-star yellow-star" aria-hidden="true"></i>-->
-<!--					<i class="fa fa-star gray-star" aria-hidden="true"></i>-->
-					<button data-product="{{product.id}}" data-action="add" class="btn btn-info update-cart"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</button>
 
+					</div></a>
+
+<!--					<button data-product="{{product.id}}" data-action="add" class="btn btn-info update-cart"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</button>-->
+					<a href="product/{{product.id}}" class="btn btn-info"><span class="glyphicon glyphicon-shopping-cart"></span> BUY</a>
 					<h4>{{product.name}}</h4>
 					<h5>Rs {{product.price}}</h5>
 				</div>

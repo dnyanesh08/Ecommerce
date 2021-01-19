@@ -93,8 +93,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="col-md-8 phone-w3l">
 			<ul>
-				<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></li>
-				<li>+917507473366</li>
+				<li><span class="glyphicon glyphicon-earphone" aria-hidden="true" style="color: #ffff;"></span></li>
+				<li style="color: #ffff;">+917507473366</li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>
@@ -184,19 +184,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</form>
 		</div>
 		<div class="col-md-1 cart-wthree">
-			<div class="cart">
-<!--				<form action="#" method="post" class="last">-->
-<!--					{% csrf_token %}-->
-<!--					<input type="hidden" name="cmd" value="_cart" />-->
-<!--					<input type="hidden" name="display" value="1" />-->
-<!--					<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>-->
-<!--				</form>-->
-				<a href="/cart.html">
-<!--				  <span class="glyphicon glyphicon-shopping-cart "></span>-->
-					<img  src="{% static 'images/cart.png' %}" alt=" " />
-					<span class="badge badge-warning" id="cart-total">{{cartItems}}</span>
-				</a>
-			</div>
+<!--			<div class="cart">-->
+<!--				<a href="/cart.html">-->
+<!--					<img  src="{% static 'images/cart.png' %}" alt=" " />-->
+<!--					<span class="badge badge-warning" id="cart-total">{{cartItems}}</span>-->
+<!--				</a>-->
+<!--			</div>-->
 
 		</div>
 		<div class="clearfix"></div>
@@ -212,25 +205,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<p class="copy-right">© 2020 Trendz Make . All rights reserved | </a></p>
 	</div>
 </div>
-	<!-- cart-js -->
-<!--	<script src="{% static 'js/minicart.js' %}"></script>-->
-<!--	<script>-->
-<!--        w3ls1.render();-->
-
-<!--        w3ls1.cart.on('w3sb1_checkout', function (evt) {-->
-<!--        	var items, len, i;-->
-
-<!--        	if (this.subtotal() > 0) {-->
-<!--        		items = this.items();-->
-
-<!--        		for (i = 0, len = items.length; i < len; i++) {-->
-<!--        			items[i].set('shipping', 0);-->
-<!--        			items[i].set('shipping2', 0);-->
-<!--        		}-->
-<!--        	}-->
-<!--        });-->
-<!--    </script>-->
-	<!-- //cart-js -->
 	<script src="{% static 'js/cart.js' %}"></script>
 </body>
 </html>

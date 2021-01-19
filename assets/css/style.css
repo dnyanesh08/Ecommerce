@@ -59,6 +59,8 @@ img {
 /*--header--*/
 .header-top-w3layouts {
     padding: 10px 0;
+    /* background-color: #b9c0c9; */
+    background-color: #141518;
 }
 .logo-w3{
 	width:50%;
@@ -66,7 +68,7 @@ img {
 }
 .logo-w3 a h1,.footer a h3{
 	text-align:left;
-	color:#000000;
+	color:#cc8a44;
 	font-size:40px;
 	position:relative;
 }
@@ -83,7 +85,7 @@ img {
     left: -22px;
 }
 .logo-w3 a h1 span ,.footer a h3 span {
-    color: #6ee78c;
+    color: #ffffff;
     font-size: 18px;
     -ms-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
@@ -215,7 +217,7 @@ button.w3view-cart:focus{
 .banner-agile{
 	background:url(../images/banner.jpg) no-repeat 0px 0px;
 	background-size:cover;
-	min-height:400px;
+	min-height:550px;
 }
 .sub-banner{
 	background:url(../images/banner2.jpg) no-repeat 0px 0px;
@@ -240,25 +242,26 @@ button.w3view-cart:focus{
 .banner-agile h2{
 	font-size:35px;
 	text-align:left;
-	margin-top:5%;
-	color: #00e58b;
+	margin-left: 57px;
+	margin-top:1%;
+	color: #06f50e;
 }
 .banner-agile h3{
 	font-size:50px;
 	text-align:left;
-	margin:15px 0;
-	color:#fff;
+	margin:15px 75px;
+	color:#060606;
 	font-weight:700;
 }
 .banner-agile h3 span{
-	color:#00e58b;
+	color:#75e91c;
 }
 .banner-agile p{
 	width:49%;
 	font-size:14px;
 	line-height:28px;
 	text-align:left;
-	color: #ffffff;
+	color: #401b1b;
 }
 .banner-agile a{
 	background:#000;

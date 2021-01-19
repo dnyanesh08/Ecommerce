@@ -41,8 +41,11 @@ def product(request, id):
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
+    price = data['total_price']
 
-    context = {'items': items, 'order': order, 'product': product, 'cartItems': cartItems}
+    # final_price = price['total_price']
+
+    context = {'items': items, 'order': order, 'price': price, 'product': product, 'cartItems': cartItems}
     return render(request, 'product.html', context)
 
 def shop(request):
@@ -83,9 +86,9 @@ def updateItem(request):
     print('Action:', action)
     print('productId:', productId)
 
-    customer = request.user.customer
+    # customer = request.user.customer
     product = Product.objects.get(id=productId)
-    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+    order, created = Order.objects.get_or_create(complete=False)
 
     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
@@ -105,8 +108,8 @@ def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
     if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        # customer = request.user.customer
+        order, created = Order.objects.get_or_create(complete=False)
         total = float(data['form']['total'])
         order.transaction_id = transaction_id
 
@@ -116,7 +119,7 @@ def processOrder(request):
 
         if order.shipping == True:
             ShippingAddress.objects.create(
-                customer=customer,
+                # user=user,
                 order=order,
                 # firstname=data['shipping']['firstname'],
                 # lastname=data['shipping']['lastname'],
@@ -131,36 +134,6 @@ def processOrder(request):
     else:
         print('User is not logged in..')
     return JsonResponse('Payment Complete!', safe=False)
-#
-# def processOrder(request):
-#     payment_id = request.POST.get('razorpay_payment_id')
-#     data = json.loads(request.body)
-#     if request.user.is_authenticated:
-#         total = float(data['form']['total'])
-#         customer = request.user.customer
-#         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-#         order_amount = order.get_cart_total
-#         order_currency = 'INR'
-#         order_receipt = 'order_rcptid_11'
-#         order.payment_id = payment_id
-#         client = razorpay.Client(auth=("rzp_test_AKn8VLbtx81g16", "oezIZvD7NLXByzLy3NyYQu0d"))
-#         client.order.create(dict(amount=order_amount, currency=order_currency, receipt=order_receipt))
-#
-#         if order_amount == float(order.get_cart_total):
-#             order.complete = True
-#         order.save()
-#
-#         if order.shipping == True:
-#                 ShippingAddress.objects.create(
-#                     customer=customer,
-#                     order=order,
-#                     city=data['shipping']['city'],
-#                     state=data['shipping']['state'],
-#                     zipcode=data['shipping']['zipcode'],
-#                 )
-#         else:
-#             print('User is not logged in..')
-#         return JsonResponse('Payment Complete!', safe=False)
 
 def payment(request):
     return render(request, 'payment.html')
@@ -168,3 +141,9 @@ def payment(request):
 @csrf_exempt
 def success(request):
     return render(request, "success.html")
+
+
+def count(request):
+    final_price = {'total_price'}
+    context = {'final_price': final_price}
+    return render(request, context)

@@ -3,12 +3,12 @@
  {% load static %}
 <!--{% static "images" as baseUrl %}-->
  <div class="banner-agile">
-	<div class="container">
-		<h2>WELCOME TO</h2>
-		<h3>TRENDZ <span>MAKE</span></h3>
-		<p>We provides creative wooden art and home decore collection </p>
-		<a href="#">Read More</a>
-	</div>
+<!--	<div class="container">-->
+<!--		<h2>WELCOME TO</h2>-->
+<!--		<h3>TRENDZ <span>MAKE</span></h3>-->
+<!--		<p>We provides creative wooden art and home decore collection </p>-->
+<!--		<a href="#">Read More</a>-->
+<!--	</div>-->
 </div>
 <!-- top-brands -->
 	<div class="top-brands">
@@ -69,23 +69,10 @@
 				<div class="col-md-3 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
 					<a href="product/{{product.id}}"><div class="product-img">
 						<img src="{{product.imageURL}}" alt="" />
-<!--						<div class="p-mask">-->
-<!--							<form action="/" method="post">-->
-<!--								{% csrf_token %}-->
-<!--								<input type="hidden" name="cmd" value="_cart" />-->
-<!--								<input type="hidden" name="add" value="{{product.id}}" />-->
-<!--								<input type="hidden" name="w3ls1_item" value="{{product.name}}" />-->
-<!--								<input type="hidden" name="amount" value="{{product.price}}" />-->
-<!--								<button type="submit" class="w3ls-cart pw3ls-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>-->
-<!--							</form>-->
-<!--						</div>-->
+
 					</div></a>
-<!--					<i class="fa fa-star yellow-star" aria-hidden="true"></i>-->
-<!--					<i class="fa fa-star yellow-star" aria-hidden="true"></i>-->
-<!--					<i class="fa fa-star yellow-star" aria-hidden="true"></i>-->
-<!--					<i class="fa fa-star yellow-star" aria-hidden="true"></i>-->
-<!--					<i class="fa fa-star gray-star" aria-hidden="true"></i>-->
-					<button data-product="{{product.id}}" data-action="add" class="btn btn-info update-cart"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</button>
+<!--					<button data-product="{{product.id}}" data-action="add" class="btn btn-info update-cart"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</button>-->
+					<a href="product/{{product.id}}" class="btn btn-info"><span class="glyphicon glyphicon-shopping-cart"></span> BUY</a>
 					<h4>{{product.name}}</h4>
 					<h5>Rs {{product.price}}</h5>
 				</div>
@@ -141,33 +128,7 @@
 			</div>
 		</div>
 		<div class="col-md-6 testimonials">
-<!--			<div class="test-inner">-->
-<!--				<div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">-->
-<!--					<div class="wmuSliderWrapper">-->
-<!--						<article style="position: absolute; width: 100%; opacity: 0;">-->
-<!--							<div class="banner-wrap">-->
-<!--								<img src="{% static 'images/c1.png' %}" alt=" " class="img-responsive" />-->
-<!--								<p>Nam elementum magna id nibh pretium suscipit varius tortor. Phasellus in lorem sed massa consectetur fermentum. Praesent pellentesque sapien euismod.</p>-->
-<!--								<h4># Andrew</h4>-->
-<!--							</div>-->
-<!--						</article>-->
-<!--						<article style="position: absolute; width: 100%; opacity: 0;">-->
-<!--							<div class="banner-wrap">-->
-<!--								<img src="{% static 'images/c2.png' %}" alt=" " class="img-responsive" />-->
-<!--								<p>Morbi semper, risus dignissim sagittis iaculis, diam est ornare neque, accumsan risus tortor at est. Vivamus auctor quis lacus sed interdum celerisque.</p>-->
-<!--								<h4># Lucy</h4>-->
-<!--							</div>-->
-<!--						</article>-->
-<!--						<article style="position: absolute; width: 100%; opacity: 0;">-->
-<!--							<div class="banner-wrap">-->
-<!--								<img src="{% static 'images/c3.png' %}" alt=" " class="img-responsive" />-->
-<!--								<p>Fusce non cursus quam, in hendrerit sem. Nam nunc dui, venenatis vitae porta sed, sagittis id nisl. Pellentesque celerisque  eget ullamcorper vehicula. </p>-->
-<!--								<h4># Martina</h4>-->
-<!--							</div>-->
-<!--						</article>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
+
 			<div class="contact" style="padding:0px;">
 <!--				<h4>Contact</h4>-->
 				<form action="#" method="post">

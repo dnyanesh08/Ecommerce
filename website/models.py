@@ -4,18 +4,36 @@ from django.contrib.auth.models import User, auth
 
 # Create your models here.
 
+class Charector(models.Model):
+    name = models.CharField(max_length=100)
+    total = models.FloatField()
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     name = models.CharField(max_length=50)
-    price = models.IntegerField()
+    base_price = models.IntegerField()
+    ch_price = models.CharField(max_length=50)
+    # price = models.IntegerField()
     offer = models.BooleanField(default=False)
     image = models.ImageField()
     desc = models.TextField()
     type = models.CharField(max_length=50)
     category = models.CharField(max_length=50)
     digital = models.BooleanField(default=False, null=True,blank=False)
+    charector = models.ForeignKey(Charector, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+    # @property
+    # def total_price(self):
+    #     ch_price = self.ch_price_set.all()
+    #     price = (sum(len(self.ch_price) for x in self.ch_price.split()) * 20) + self.base_price
+    #     return price
+
 
     @property
     def imageURL(self):
