@@ -10,7 +10,6 @@ from django.views.decorators.csrf import csrf_exempt
 import datetime
 from . utils import cookieCart, cartData
 
-
 def index(request):
     products = Product.objects.all()
     data = cartData(request)
@@ -37,15 +36,20 @@ def product(request, id):
     # product = Product.objects.get(id=id)
     product = Product.objects.filter(id=id)
 
-    data = cartData(request)
-    cartItems = data['cartItems']
-    order = data['order']
-    items = data['items']
-    price = data['total_price']
+    charector = Charector.name
+    # data = cartData(request)
+    # cartItems = data['cartItems']
+    # order = data['order']
+    # items = data['items']
+    price = {'total_price'}
 
     # final_price = price['total_price']
 
-    context = {'items': items, 'order': order, 'price': price, 'product': product, 'cartItems': cartItems}
+    # context = {'items': items, 'order': order,  'product': product, 'cartItems': cartItems, 'charector': charector}
+    # return render(request, 'product.html', context)
+
+    context = {'product': product,'charector': charector}
+    # return HttpResponseRedirect("/product")
     return render(request, 'product.html', context)
 
 def shop(request):
@@ -144,6 +148,17 @@ def success(request):
 
 
 def count(request):
-    final_price = {'total_price'}
-    context = {'final_price': final_price}
-    return render(request, context)
+    product = Product.objects.filter(id=id)
+
+    charector = Charector.name
+    data = cartData(request)
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+    price = {'total_price'}
+
+    # final_price = price['total_price']
+
+    context = {'items': items, 'product': product, 'charector': charector}
+    return render(request, 'product.html', context)
+
