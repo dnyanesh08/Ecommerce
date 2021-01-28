@@ -5,12 +5,13 @@ urlpatterns = [
     path('contact.html', views.contact, name='contact'),
     path('product/<id>', views.product, name='product'),
     path('shop.html', views.shop, name='shop'),
-    path('checkout.html', views.checkout, name='checkout'),
+
+    # path('checkout.html', views.checkout, name='checkout'),
     path('cart.html/', views.cart, name='cart'),
-    path('update_item/', views.updateItem, name='update_item'),
-    path('count/', views.count, name='count'),
-    path('payment.html/', views.payment, name='payment'),
-    path('process_order/', views.processOrder, name='process_order'),
-    path('success', views.success, name='success')
+    # path('update_item/', views.updateItem, name='update_item'),
+    # path('charector/', views.charector, name='charector'),
+    # path('payment.html/', views.payment, name='payment'),
+    # path('process_order/', views.processOrder, name='process_order'),
+    # path('success', views.success, name='success')
 
 ]

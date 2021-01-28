@@ -30,27 +30,60 @@
 						<p>Processing Time: Item will be shipped out within 7-10 working days. </p>
 						<div class="single-price">
 							<ul>
-								<li>Rs {{total_price}}</li>
+<!--								<li>Your Price : Rs {{your_price}} </li>-->
 							</ul>
 						</div>
 						<p class="single-price-text">{{prod.desc}} </p>
-						<form action="/" method="post" id="form" class="form">
-							{% csrf_token %}
-							<div class="form-group">
-								<input class="form-control" value="{{prod.charector.name}}"  type="text"  name="firstname" required=""  placeholder="Enter Your Name on Plate">
-								<input type="Submit" name="submit" value="Submit"/>
-							</div>
-						</form>
-						<p>Ex. Jogiya Family, Pravin, Veena</p>
-						<p id="showdata"></p>
-<!--						<button data-product="{{prod.id}}" data-action="add" class="btn btn-info update-cart"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</button>-->
-						<!--						</form>-->
-<!--						<button class="w3ls-cart w3ls-cart-like"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy Now</button>-->
-						<button data-product="{{prod.id}}" data-action="add" class="btn btn-info update-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy Now</button>
+<!--						<button data-product="{{prod.id}}" data-action="add" class="btn btn-info update-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy Now</button>-->
+						<a href="/cart.html" class="btn btn-info">Buy Now</a>
 					</div>
 {% endfor %}
-				   <div class="clearfix"> </div>
 
+
+<!--							<li>Your Price : Rs {% for charector in charectors %}-->
+<!--								{% if forloop.last %}-->
+<!--								{{charector.your_price}}-->
+<!--								{% endif %}-->
+<!--								{% endfor %}-->
+<!--								+-->
+<!--								{% for prod in product %} {{prod.base_price}} {% endfor %} =</li>-->
+
+<!--							<p>Ex. Jogiya Family, Pravin, Veena</p>-->
+
+
+				   <div class="clearfix"> </div>
+<!--					<form action="" method="POST">-->
+<!--								{% csrf_token %}-->
+<!--								<div class="form-group">-->
+<!--&lt;!&ndash;									<input class="form-control"  type="text"  name="firstname" required=""  placeholder="Enter Your Name on Plate">&ndash;&gt;-->
+<!--									{{ form.as_p }}-->
+<!--									<input type="Submit" name="submit" value="Submit"/>-->
+
+<!--								</div>-->
+<!--							</form>-->
+<!--							<li>Your Price : Rs {{your_price}} </li>-->
+<!--							<p>Ex. Jogiya Family, Pravin, Veena</p>-->
+
+
+					<div class="row">
+						<br/><br/>
+						<form action="" method="POST">
+								{% csrf_token %}
+								<div class="form-group">
+									{{ form.as_p }}
+									<br/>
+									<input type="Submit" name="submit" value="Submit"/>
+
+								</div>
+							</form>
+						<li>Your Price : Rs {% for charector in charectors %}
+							{% if forloop.last %}
+								{{charector.your_price|add:product.last.base_price}}
+							{% endif %}
+							{% endfor %}
+
+						</li>
+						</div>
 				</div>
 			</div>
 {% for prod in product %}
