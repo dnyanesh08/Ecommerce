@@ -21,19 +21,19 @@
                             </thead>
 
                             <tbody>
-{% for prod in product %}
-                                <tr>
-                                    <td><img src="{{prod.image.url}}" class="img-cart"></td>
-                                    <td><strong></strong></td>
-                                    <td>Rs. {% for charector in charectors %}
-							{% if forloop.last %}
-                                        {{charector.your_price|add:product.last.base_price}}
-                                    {% endif %}
-							{% endfor %}</td>
+<!--{% for prod in product %}-->
+<!--                                <tr>-->
+<!--                                    <td><img src="{{prod.image.url}}" class="img-cart"></td>-->
+<!--                                    <td><strong></strong></td>-->
+<!--                                    <td>Rs. {% for charector in charectors %}-->
+<!--							{% if forloop.last %}-->
+<!--                                        {{charector.your_price|add:product.last.base_price}}-->
+<!--                                    {% endif %}-->
+<!--							{% endfor %}</td>-->
 
 
-                                </tr>
-{% endfor %}
+<!--                                </tr>-->
+<!--{% endfor %}-->
 
                                 <tr>
                                     <td colspan="6">&nbsp;</td>
