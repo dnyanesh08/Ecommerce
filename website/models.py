@@ -1,9 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User, auth
 
-
 # Create your models here.
-
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
@@ -38,7 +36,7 @@ class Product(models.Model):
         return url
 
 class Charector(models.Model):
-    name = models.CharField(max_length=100,  null=True, blank=True, unique=True)
+    name = models.CharField(max_length=100,  null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
     # total = models.FloatField()
 
@@ -47,8 +45,13 @@ class Charector(models.Model):
 
     @property
     def your_price(self):
-        total = (len(self.name) - self.name.count(" ")) * 20
+        total = (len(self.name) - self.name.count(" ")) * 40
         return total
+
+
+
+
+
 
     # @property
     # def your_price(self):

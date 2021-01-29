@@ -52,8 +52,8 @@ def product(request, id):
     else:
         form = CharectorForm()
 
-    charectors = Charector.objects.filter()
-    # charectors = Charector.objects.all()
+    # charectors = Charector.objects.filter(product=product.last())
+    charectors = Charector.objects.all()
 
     print(charectors)
 
@@ -63,15 +63,15 @@ def product(request, id):
 
 
 
-def cart(request):
-    product = Product.objects.filter()
-    print(product)
-    form = CharectorForm()
-    charectors = Charector.objects.filter()
-    print(charectors)
-    context = {'product': product, 'form': form, 'charectors': charectors}
-    return render(request, 'cart.html', context)
-
+# def cart(request):
+#     product = Product.objects.filter()
+#     print(product)
+#     form = CharectorForm()
+#     charectors = Charector.objects.filter()
+#     print(charectors)
+#     context = {'product': product, 'form': form, 'charectors': charectors}
+#     return render(request, 'cart.html', context)
+#
 
 
 

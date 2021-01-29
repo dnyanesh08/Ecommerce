@@ -1,7 +1,7 @@
  {% extends 'base.html' %}
 {% block content %}
  {% load static %}
-<div class="products">
+ <div class="products" xmlns="http://www.w3.org/1999/html">
 
 		<div class="container">
 			<div class="single-page">
@@ -35,7 +35,7 @@
 						</div>
 						<p class="single-price-text">{{prod.desc}} </p>
 <!--						<button data-product="{{prod.id}}" data-action="add" class="btn btn-info update-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy Now</button>-->
-						<a href="/cart.html" class="btn btn-info">Buy Now</a>
+<!--						<a href="/" class="btn btn-info">Buy Now</a>-->
 					</div>
 {% endfor %}
 
@@ -65,24 +65,115 @@
 <!--							<p>Ex. Jogiya Family, Pravin, Veena</p>-->
 
 
-					<div class="row">
+					<div class="row" style="margin-left:50px;">
 						<br/><br/>
 						<form action="" method="POST">
 								{% csrf_token %}
 								<div class="form-group">
+									Enter Your Name On Plate <br/><br/>
 									{{ form.as_p }}
 									<br/>
-									<input type="Submit" name="submit" value="Submit"/>
+									<input type="Submit" name="submit" value="Submit & Pay" class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"  style="margin-left: 30px;"/>
 
 								</div>
 							</form>
+						<div class="collapse" id="collapseExample">
 						<li>Your Price : Rs {% for charector in charectors %}
 							{% if forloop.last %}
 								{{charector.your_price|add:product.last.base_price}}
+							<input type="button" value="Pay Now" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter" />
 							{% endif %}
 							{% endfor %}
 
 						</li>
+						</div>
+
+						<!-- Modal -->
+						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+							  <div class="modal-header">
+								<h3 class="modal-title" id="exampleModalCenterTitle">Your Price : Rs {% for charector in charectors %}
+							{% if forloop.last %}
+								{{charector.your_price|add:product.last.base_price}}
+							{% endif %}
+							{% endfor %}</h3>
+								  <h4>Your Name On Plate : {% for charector in charectors %}
+									  {% if forloop.last %}
+									  {{charector.name}}
+									  {% endif %}
+									  {% endfor %}</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								  <span aria-hidden="true">&times;</span>
+								</button>
+							  </div>
+							  <div class="modal-body">
+								  <div class="form">
+									<h3 style="text-align:left; margin-bottom:30px; color:#6de78c; background-color:#f8f8f8; border-bottom: solid 2px #2c2323;">Shipping At</h3>
+									<form action="/" method="post" id="form" class="form">
+										{% csrf_token %}
+										<div class="form-group">
+											<input class="form-control"  type="text"  name="firstname" required=""  placeholder="First Name">
+											<input class="form-control"  type="text"  name="lastname" required=""  placeholder="Last Name">
+											<div class="clearfix"></div>
+										</div>
+										<br/>
+										<div class="form-group">
+											<input class="form-control"  type="text"  name="email"  required=""  placeholder="Email">
+											<input class="form-control"  type="text"  name="mobile"  required=""  placeholder="Mobile No.">
+											<div class="clearfix"></div>
+										</div>
+										<br/>
+										<div class="form-group">
+											<input class="form-control" type="text"  name="address1"  required=""  placeholder="Address1">
+											<input class="form-control" type="text"  name="address2"  required=""  placeholder="Address2">
+											<div class="clearfix"></div>
+										</div>
+										<br/>
+										<div class="form-group">
+											<input class="form-control" type="text"  name="town"  required=""  placeholder="Town">
+											<select class="form-control" name="city" >
+											  <option selected>City</option>
+											  <option value="1">Nagpur</option>
+											  <option value="2">Pune</option>
+											  <option value="3">Mumbai</option>
+											</select>
+											<div class="clearfix"></div>
+										</div>
+										<br/>
+										<div class="form-group">
+											<select class="form-control" name="state">
+											  <option selected>State</option>
+											  <option value="1">Maharashtra</option>
+											</select>
+											<input class="form-control" type="text"  name="zipcode"  required=""  placeholder="Zipcode">
+										</div>
+										<br/>
+				<!--                        <a href="/payment.html" class="btn btn-success" id="form-button" style="width:100%;">Place Order</a>-->
+
+
+
+								  <h3>	For placed your Order Pay Your Price on UPI => <br/><br/><span style="color:red;">9561301779@ybl</span></h3>
+
+							  </div>
+							  <div class="modal-footer">
+<!--								  <p>After Paid Click On Placed Order</p>-->
+								<input type="submit" value="Place Order" class="btn btn-success" id="form-button" style="width:100%">
+								  </form>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						</div>
+<!--						<li>Your Price : Rs {% for charector in charectors %}-->
+<!--								{% if forloop.last %}-->
+<!--								{{charector.last.your_price}}-->
+<!--								{% endif %}-->
+<!--								{% endfor %}-->
+<!--								+-->
+<!--								{% for prod in product %} {{prod.base_price}} {% endfor %} =</li>-->
+
+<!--							<p>Ex. Jogiya Family, Pravin, Veena</p>-->
 						</div>
 				</div>
 			</div>

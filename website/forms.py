@@ -9,10 +9,7 @@ class CharectorForm(forms.ModelForm):
         model = Charector
         fields = ('name',)
 
-    def clean(self):
-        cleaned_data = super(CharectorForm, self).clean()
-        # additional cleaning here
-        return cleaned_data
+
 
 
 class ProductForm(forms.ModelForm):
