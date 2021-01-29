@@ -73,11 +73,10 @@
 									Enter Your Name On Plate <br/><br/>
 									{{ form.as_p }}
 									<br/>
-									<input type="Submit" name="submit" value="Submit & Pay" class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"  style="margin-left: 30px;"/>
+									<input type="Submit" name="submit" value="Submit & Pay" class="btn btn-primary"  style="margin-left: 30px;"/>
 
 								</div>
 							</form>
-						<div class="collapse" id="collapseExample">
 						<li>Your Price : Rs {% for charector in charectors %}
 							{% if forloop.last %}
 								{{charector.your_price|add:product.last.base_price}}
@@ -86,7 +85,6 @@
 							{% endfor %}
 
 						</li>
-						</div>
 
 						<!-- Modal -->
 						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
