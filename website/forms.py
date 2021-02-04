@@ -8,6 +8,13 @@ class CharectorForm(forms.ModelForm):
     class Meta:
         model = Charector
         fields = ('name',)
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'id': 'post-text',
+                'required': True,
+                'placeholder': 'Enter Your Name On Plate....'
+            }),
+        }
 
 
 

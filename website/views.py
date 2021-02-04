@@ -5,7 +5,6 @@ from django.contrib.auth.models import User, auth
 from .forms import ProductForm
 from django.http import JsonResponse
 import json
-# import razorpay
 from django.views.decorators.csrf import csrf_exempt
 import datetime
 from .forms import CharectorForm
@@ -39,25 +38,20 @@ def contact(request):
 
     return render(request, 'contact.html')
 
+
 def product(request, id):
     product = Product.objects.filter(id=id)
     print(product)
-
     if request.method == "POST":
         form = CharectorForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
-            # return redirect('/', pk=post.pk)
     else:
         form = CharectorForm()
 
-    # charectors = Charector.objects.filter(product=product.last())
     charectors = Charector.objects.all()
-
     print(charectors)
-
-
     context = {'product': product, 'form': form, 'charectors': charectors}
     return render(request, 'product.html', context)
 

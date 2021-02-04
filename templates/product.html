@@ -34,73 +34,48 @@
 							</ul>
 						</div>
 						<p class="single-price-text">{{prod.desc}} </p>
-<!--						<button data-product="{{prod.id}}" data-action="add" class="btn btn-info update-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Buy Now</button>-->
-<!--						<a href="/" class="btn btn-info">Buy Now</a>-->
+						<form action="" method="POST" class="form-inline">
+							{% csrf_token %}
+							<div class="form-group mb-2">
+								{{ form.as_p }}
+							</div>
+							<input type="Submit" name="submit" value="Submit & Pay" id="show" class="btn btn-primary mb-2"  style="margin-left: 30px;"/>
+						</form>
+						<br><br><br><br>
+						<div class="toshow" id="toshow" style="display:none;" >Your Price : Rs {% for charector in charectors %}
+								{% if forloop.last %}
+									{{charector.your_price|add:product.last.base_price}}
+								<input type="button" value="Pay Now" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter" />
+								{% endif %}
+								{% endfor %}
+							</div>
 					</div>
+
 {% endfor %}
+					<div class="clearfix"> </div>
 
-
-<!--							<li>Your Price : Rs {% for charector in charectors %}-->
-<!--								{% if forloop.last %}-->
-<!--								{{charector.your_price}}-->
-<!--								{% endif %}-->
-<!--								{% endfor %}-->
-<!--								+-->
-<!--								{% for prod in product %} {{prod.base_price}} {% endfor %} =</li>-->
-
-<!--							<p>Ex. Jogiya Family, Pravin, Veena</p>-->
-
-
-				   <div class="clearfix"> </div>
-<!--					<form action="" method="POST">-->
-<!--								{% csrf_token %}-->
-<!--								<div class="form-group">-->
-<!--&lt;!&ndash;									<input class="form-control"  type="text"  name="firstname" required=""  placeholder="Enter Your Name on Plate">&ndash;&gt;-->
-<!--									{{ form.as_p }}-->
-<!--									<input type="Submit" name="submit" value="Submit"/>-->
-
-<!--								</div>-->
-<!--							</form>-->
-<!--							<li>Your Price : Rs {{your_price}} </li>-->
-<!--							<p>Ex. Jogiya Family, Pravin, Veena</p>-->
-
-
-					<div class="row" style="margin-left:50px;">
-						<br/><br/>
-						<form action="" method="POST">
-								{% csrf_token %}
-								<div class="form-group">
-									Enter Your Name On Plate <br/><br/>
-									{{ form.as_p }}
-									<br/>
-									<input type="Submit" name="submit" value="Submit & Pay" class="btn btn-primary"  style="margin-left: 30px;"/>
-
-								</div>
-							</form>
-						<li>Your Price : Rs {% for charector in charectors %}
-							{% if forloop.last %}
-								{{charector.your_price|add:product.last.base_price}}
-							<input type="button" value="Pay Now" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter" />
-							{% endif %}
-							{% endfor %}
-
-						</li>
 
 						<!-- Modal -->
 						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 						  <div class="modal-dialog modal-dialog-centered" role="document">
 							<div class="modal-content">
 							  <div class="modal-header">
-								<h3 class="modal-title" id="exampleModalCenterTitle">Your Price : Rs {% for charector in charectors %}
-							{% if forloop.last %}
-								{{charector.your_price|add:product.last.base_price}}
-							{% endif %}
-							{% endfor %}</h3>
-								  <h4>Your Name On Plate : {% for charector in charectors %}
-									  {% if forloop.last %}
-									  {{charector.name}}
-									  {% endif %}
-									  {% endfor %}</h4>
+								<h3 class="modal-title" id="exampleModalCenterTitle">
+									Your Price : Rs {% for charector in charectors %}
+											{% if forloop.last %}
+												{{charector.your_price|add:product.last.base_price}}
+											{% endif %}
+										{% endfor %}
+								</h3>
+								<h4>Your Name On Plate:
+									<span style="color:#00e58b;">
+										{% for charector in charectors %}
+										  {% if forloop.last %}
+											{{charector.name}}
+										  {% endif %}
+										{% endfor %}
+									</span>
+								</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								  <span aria-hidden="true">&times;</span>
 								</button>
@@ -123,8 +98,8 @@
 										</div>
 										<br/>
 										<div class="form-group">
-											<input class="form-control" type="text"  name="address1"  required=""  placeholder="Address1">
-											<input class="form-control" type="text"  name="address2"  required=""  placeholder="Address2">
+											<textarea class="form-control" type="textarea"  name="address1"  required=""  placeholder="Address1"></textarea>
+<!--											<input class="form-control" type="text"  name="address2"  required=""  placeholder="Address2">-->
 											<div class="clearfix"></div>
 										</div>
 										<br/>
@@ -147,31 +122,21 @@
 											<input class="form-control" type="text"  name="zipcode"  required=""  placeholder="Zipcode">
 										</div>
 										<br/>
-				<!--                        <a href="/payment.html" class="btn btn-success" id="form-button" style="width:100%;">Place Order</a>-->
-
-
-
-								  <h3>	For placed your Order Pay Your Price on UPI => <br/><br/><span style="color:red;">9561301779@ybl</span></h3>
-
-							  </div>
-							  <div class="modal-footer">
-<!--								  <p>After Paid Click On Placed Order</p>-->
-								<input type="submit" value="Place Order" class="btn btn-success" id="form-button" style="width:100%">
-								  </form>
+										<h3>For placed your Order Pay Your Price on UPI => <br/><br/><span style="color:red;">9561301779@ybl</span></h3>
+										<div class="transaction-input" style="text-align:center;">
+											<input class="form-control"  type="text"  name="transaction"  required=""  placeholder="Transaction Number">
+										</div>
+										<div class="modal-footer">
+											<h3>Fill The Transaction Number Before Order Placed..</h3>
+										</div>
+										<input type="submit" value="Place Order" class="btn btn-success" id="form-button" style="width:100%">
+									</form>
 								</div>
 							  </div>
 							</div>
 						  </div>
 						</div>
-<!--						<li>Your Price : Rs {% for charector in charectors %}-->
-<!--								{% if forloop.last %}-->
-<!--								{{charector.last.your_price}}-->
-<!--								{% endif %}-->
-<!--								{% endfor %}-->
-<!--								+-->
-<!--								{% for prod in product %} {{prod.base_price}} {% endfor %} =</li>-->
 
-<!--							<p>Ex. Jogiya Family, Pravin, Veena</p>-->
 						</div>
 				</div>
 			</div>
@@ -228,5 +193,73 @@
 {% endfor %}
 		</div>
 	</div>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>-->
+<!-- <script type="text/javascript">-->
+
+<!-- </script>-->
+
+<!--	<script type="text/javascript">-->
+<!--		$(document).ready(function(){-->
+<!--		  $("#hide").click(function(){-->
+<!--			$("#toshow").hide();-->
+<!--		  });-->
+<!--		  $("#show").click(function(){-->
+<!--			sessionStorage.reloadAfterPageLoad = false;-->
+<!--			window.location.reload();-->
+<!--			$("#toshow").show();-->
+<!--		  });-->
+<!--		});-->
+<!--	</script>-->
+
+<script type="text/javascript">
+ var $hidden = $('#toshow');
+
+localStorage.getItem('show') && $hidden.show();
+
+$('#show').on('click',function() {
+  localStorage.setItem('show',true);
+  window.location.reload(true);
+})
+</script>
+
+
+<!-- <script>-->
+<!--$('form').submit(function(e){-->
+
+<!--	e.preventDefault();-->
+<!--    $.ajax({ data: $(this).serialize(),-->
+<!--                type: $(this).attr('method'),-->
+<!--                url: $(this).attr('action'),-->
+<!--				success: function (result) {-->
+<!--					// THIS IS ACTUALLY WRONG-->
+<!--					$("#toshow").show();-->
+<!--				}-->
+
+<!--       });-->
+
+
+<!--});-->
+
+<!--</script>-->
+
+
+
+
+<!--<script>-->
+<!--$('form').submit(function(e){-->
+
+
+<!--    $.ajax({ data: $(this).serialize(),-->
+<!--                type: $(this).attr('method'),-->
+<!--                url: $(this).attr('action'),-->
+<!--                success: -->
+
+<!--       });-->
+<!--       $("#toshow").show();-->
+<!--       e.preventDefault();-->
+<!--});-->
+
+<!--</script>-->
 
  {% endblock %}
