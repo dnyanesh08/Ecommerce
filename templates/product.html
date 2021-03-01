@@ -1,7 +1,7 @@
  {% extends 'base.html' %}
 {% block content %}
  {% load static %}
- <div class="products" xmlns="http://www.w3.org/1999/html">
+ <div class="products" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 
 		<div class="container">
 			<div class="single-page">
@@ -26,7 +26,7 @@
 					</div>
 {% for prod in product %}
 					<div class="col-md-6 single-top-right">
-						<h3 class="item_name"> {{prod.name}}</h3>
+						<h3 class="item_name" id="product-name"> {{prod.name}}</h3>
 						<p>Processing Time: Item will be shipped out within 7-10 working days. </p>
 						<div class="single-price">
 							<ul>
@@ -42,10 +42,11 @@
 							<input type="Submit" name="submit" value="Submit & Pay" id="show" class="btn btn-primary mb-2"  style="margin-left: 30px;"/>
 						</form>
 						<br><br><br><br>
-						<div class="toshow" id="toshow" style="display:none;" >Your Price : Rs {% for charector in charectors %}
+						<div class="toshow" id="toshow" style="display:none;" >Your Price :  {% for charector in charectors %}
 								{% if forloop.last %}
-									{{charector.your_price|add:product.last.base_price}}
-								<input type="button" value="Pay Now" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter" />
+								<span style="color:#f50424;" id="your-price">{{charector.your_price|add:product.last.base_price}}</span>
+								<input type="button" value="Pay Now" onclick="getDisplay()" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter" />
+<!--									<a class="form-control" type="text" href="/order.html" >Pay Now</a>-->
 								{% endif %}
 								{% endfor %}
 							</div>
@@ -83,53 +84,109 @@
 							  <div class="modal-body">
 								  <div class="form">
 									<h3 style="text-align:left; margin-bottom:30px; color:#6de78c; background-color:#f8f8f8; border-bottom: solid 2px #2c2323;">Shipping At</h3>
-									<form action="/" method="post" id="form" class="form">
+									<form action="/order/" method="post" class="form" id="post-form">
 										{% csrf_token %}
+<!--										{{ f.as_p }}-->
+<!--											<input class="form-control" id="amount"  type="hidden" name="amount" required=""  placeholder="Last Name">-->
+<!--												Rs{% for charector in charectors %}-->
+<!--													{% if forloop.last %}-->
+<!--														{{charector.your_price|add:product.last.base_price}}-->
+<!--													{% endif %}-->
+<!--												{% endfor %}-->
+<!--											</input>-->
+<!--											<input class="form-control" id="name"  type="hidden" name="name_on_plate" required=""  placeholder="Last Name">-->
+<!--												Your Name On Plate:-->
+<!--												<span style="color:#00e58b;">-->
+<!--													{% for charector in charectors %}-->
+<!--													  {% if forloop.last %}-->
+<!--														{{charector.name}}-->
+<!--													  {% endif %}-->
+<!--													{% endfor %}-->
+<!--												</span>-->
+<!--											</input>-->
+											<input class="form-control" id="name" onclick="this.value=''" type="hidden" name="name_on_plate" placeholder="Enter Name On Plate" required="">
+											<input class="form-control" id="amount" type="hidden" name="amount"required="">
+											<input class="form-control" id="frame" type="hidden" name="frame"required="">
+										</div>
+										<br/>
 										<div class="form-group">
-											<input class="form-control"  type="text"  name="firstname" required=""  placeholder="First Name">
-											<input class="form-control"  type="text"  name="lastname" required=""  placeholder="Last Name">
+											<input class="form-control"  type="text"   name="first_name" required=""  placeholder="First Name">
+											<input class="form-control"  type="text"   name="last_name" required=""  placeholder="Last Name">
 											<div class="clearfix"></div>
 										</div>
 										<br/>
 										<div class="form-group">
-											<input class="form-control"  type="text"  name="email"  required=""  placeholder="Email">
+											<input class="form-control"  type="text"   name="email"  required=""  placeholder="Email">
 											<input class="form-control"  type="text"  name="mobile"  required=""  placeholder="Mobile No.">
 											<div class="clearfix"></div>
 										</div>
 										<br/>
 										<div class="form-group">
-											<textarea class="form-control" type="textarea"  name="address1"  required=""  placeholder="Address1"></textarea>
+											<textarea class="form-control" type="textarea" name="address"  required=""  placeholder="Address1"></textarea>
 <!--											<input class="form-control" type="text"  name="address2"  required=""  placeholder="Address2">-->
+
 											<div class="clearfix"></div>
 										</div>
 										<br/>
 										<div class="form-group">
-											<input class="form-control" type="text"  name="town"  required=""  placeholder="Town">
+											<input class="form-control" type="text" name="town"  required=""  placeholder="Town">
 											<select class="form-control" name="city" >
-											  <option selected>City</option>
-											  <option value="1">Nagpur</option>
-											  <option value="2">Pune</option>
-											  <option value="3">Mumbai</option>
+											  <option value="" disabled selected>City</option>
+											  <option value="1">Ahmednagar</option>
+											  <option value="2">Akola</option>
+											  <option value="3">Amravati</option>
+											  <option value="1">Aurangabad</option>
+											  <option value="2">Beed</option>
+											  <option value="3">Bhandara</option>
+											  <option value="1">Buldhana</option>
+											  <option value="2">Chandrapur</option>
+											  <option value="3">Dhule</option>
+											  <option value="1">Gadchiroli</option>
+											  <option value="2">Gondia</option>
+											  <option value="3">Hingoli</option>
+											  <option value="1">Jalgaon</option>
+											  <option value="2">Jalna</option>
+											  <option value="3">Kolhapur</option>
+											  <option value="1">Latur</option>
+											  <option value="2">Mumbai Suburban</option>
+											  <option value="3">Nagpur</option>
+											  <option value="1">Nanded</option>
+											  <option value="2">Nandurbar</option>
+											  <option value="3">Nashik</option>
+											  <option value="1">Osmanabad</option>
+											  <option value="2">Parbhani</option>
+											  <option value="3">Pune</option>
+											  <option value="1">Raigad</option>
+											  <option value="2">Ratnagiri</option>
+											  <option value="3">Sangli</option>
+											  <option value="1">Satara</option>
+											  <option value="2">Sindhudurg</option>
+											  <option value="3">Solapur</option>
+											  <option value="2">Thane</option>
+											  <option value="3">Washim</option>
+											  <option value="1">Wardha</option>
+											  <option value="2">Yavatmal</option>
 											</select>
 											<div class="clearfix"></div>
 										</div>
 										<br/>
 										<div class="form-group">
 											<select class="form-control" name="state">
-											  <option selected>State</option>
+											  <option value="" disabled selected>State</option>
 											  <option value="1">Maharashtra</option>
 											</select>
-											<input class="form-control" type="text"  name="zipcode"  required=""  placeholder="Zipcode">
+											<input class="form-control" type="text"  name="zip_code"  required=""  placeholder="Zipcode">
 										</div>
 										<br/>
 										<h3>For placed your Order Pay Your Price on UPI => <br/><br/><span style="color:red;">9561301779@ybl</span></h3>
 										<div class="transaction-input" style="text-align:center;">
-											<input class="form-control"  type="text"  name="transaction"  required=""  placeholder="Transaction Number">
+											<input class="form-control"  type="text"  name="transaction_no"  required=""  placeholder="Transaction Number">
 										</div>
+
 										<div class="modal-footer">
 											<h3>Fill The Transaction Number Before Order Placed..</h3>
 										</div>
-										<input type="submit" value="Place Order" class="btn btn-success" id="form-button" style="width:100%">
+										<input type="submit" value="Place Order" class="btn btn-success" id="form-button"  style="width:100%">
 									</form>
 								</div>
 							  </div>
@@ -193,25 +250,6 @@
 {% endfor %}
 		</div>
 	</div>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>-->
-<!-- <script type="text/javascript">-->
-
-<!-- </script>-->
-
-<!--	<script type="text/javascript">-->
-<!--		$(document).ready(function(){-->
-<!--		  $("#hide").click(function(){-->
-<!--			$("#toshow").hide();-->
-<!--		  });-->
-<!--		  $("#show").click(function(){-->
-<!--			sessionStorage.reloadAfterPageLoad = false;-->
-<!--			window.location.reload();-->
-<!--			$("#toshow").show();-->
-<!--		  });-->
-<!--		});-->
-<!--	</script>-->
-
 <script type="text/javascript">
  var $hidden = $('#toshow');
 
@@ -222,44 +260,41 @@ $('#show').on('click',function() {
   window.location.reload(true);
 })
 </script>
+<!--<script type="text/javascript">-->
+<!--	$('#post-form').on('submit', function(event){-->
+<!--		event.preventDefault();-->
+<!--		$('#exampleModalCenter').modal('hide');-->
+<!--		$.ajax({-->
+<!--			url : "", // the endpoint-->
+<!--			type : "POST", // http method-->
+<!--		//	data : { the_post : $('#post-text').val() }, // data sent with the post request-->
+
+<!--			// handle a successful response-->
+<!--			success : function(json) {-->
+<!--			//	$('#post-text').val(''); // remove the value from the input-->
+<!--				console.log(json); // log the returned json to the console-->
+<!--				console.log("success"); // another sanity check-->
+<!--			}-->
+<!--		});-->
+<!--		alert("Your Order Place Successfully... Thank You...!")  // sanity check-->
 
 
-<!-- <script>-->
-<!--$('form').submit(function(e){-->
-
-<!--	e.preventDefault();-->
-<!--    $.ajax({ data: $(this).serialize(),-->
-<!--                type: $(this).attr('method'),-->
-<!--                url: $(this).attr('action'),-->
-<!--				success: function (result) {-->
-<!--					// THIS IS ACTUALLY WRONG-->
-<!--					$("#toshow").show();-->
-<!--				}-->
-
-<!--       });-->
-
-
-<!--});-->
-
+<!--	});-->
 <!--</script>-->
+ <script type="text/javascript">
+ 	function getDisplay(){
+		var a = document.getElementById("post-text").value;
+		var b = document.getElementById("your-price").innerHTML;
+		var c = document.getElementById("product-name").innerHTML;
+		document.getElementById("name").value = a;
+		document.getElementById("amount").value = b;
+		document.getElementById("frame").value = c;
+	}
 
-
-
-
-<!--<script>-->
-<!--$('form').submit(function(e){-->
-
-
-<!--    $.ajax({ data: $(this).serialize(),-->
-<!--                type: $(this).attr('method'),-->
-<!--                url: $(this).attr('action'),-->
-<!--                success: -->
-
-<!--       });-->
-<!--       $("#toshow").show();-->
-<!--       e.preventDefault();-->
-<!--});-->
-
-<!--</script>-->
-
+ </script>
+ <script type="text/javascript">
+ function form-button(){
+	alert("Your Order Placed Successfully...!")
+	}
+ </script>
  {% endblock %}

@@ -5,10 +5,14 @@ from django.contrib.auth.models import User, auth
 from .forms import ProductForm
 from django.http import JsonResponse
 import json
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf \
+import csrf_protect
+
 import datetime
 from .forms import CharectorForm
-from . utils import cookieCart, cartData
+from django.contrib import messages
+# from .forms import OrderForm
+# from . utils import cookieCart, cartData
 
 # def index(request):
 #     products = Product.objects.all()
@@ -50,10 +54,43 @@ def product(request, id):
     else:
         form = CharectorForm()
 
+
+
     charectors = Charector.objects.all()
-    print(charectors)
-    context = {'product': product, 'form': form, 'charectors': charectors}
+    # print(charectors)
+
+
+    context = {'product': product, 'form': form, 'charectors': charectors,}
     return render(request, 'product.html', context)
+
+@csrf_protect
+def order(request):
+    products = Product.objects.all()
+
+
+    amount = request.POST["amount"]
+    name_on_plate = request.POST["name_on_plate"]
+    frame = request.POST["frame"]
+    first_name = request.POST["first_name"]
+    last_name = request.POST["last_name"]
+    email = request.POST["email"]
+    mobile = request.POST["mobile"]
+    address = request.POST["address"]
+    town = request.POST["town"]
+    city = request.POST["city"]
+    state = request.POST["state"]
+    zip_code = request.POST["zip_code"]
+    transaction_no = request.POST["transaction_no"]
+
+    order_data = Order(amount=amount, name_on_plate=name_on_plate, frame=frame, first_name=first_name, last_name=last_name, email=email, mobile=mobile, address=address, town=town, city=city, state=state, zip_code=zip_code, transaction_no=transaction_no)
+    order_data.save()
+    messages.success(request, 'Your Order Placed Successfully...! Thanks For Order...!')
+
+    # messages.success("Your Order Placed Successfully....!")
+
+    context = {'products': products}
+    return render(request, 'index.html', context)
+
 
 
 
