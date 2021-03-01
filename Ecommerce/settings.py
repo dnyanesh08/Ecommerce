@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'Ecommerce.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        'NAME': 'ECommerce',
+        'NAME': 'TrendzMake',
         'ENGINE': 'django.db.backends.mysql',
         'USER': 'root',
         'PASSWORD': 'Softtrust@786'
