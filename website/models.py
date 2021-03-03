@@ -6,7 +6,7 @@ from django.contrib.auth.models import User, auth
 class Product(models.Model):
     name = models.CharField(max_length=50)
     base_price = models.IntegerField(null=True)
-    platename = models.CharField(max_length=100)
+    # platename = models.CharField(max_length=100)
     image = models.ImageField()
     desc = models.TextField()
     type = models.CharField(max_length=50)
@@ -47,7 +47,7 @@ class Order(models.Model):
     city = models.CharField(max_length=50, null=True, blank=True)
     state = models.CharField(max_length=50, null=True, blank=True)
     zip_code = models.IntegerField()
-    transaction_no = models.IntegerField()
+    transaction_no = models.CharField(max_length=500, null=True, blank=True)
     frame = models.CharField(max_length=50, null=True, blank=True)
     date_ordered = models.DateTimeField(auto_now=True)
     def __str__(self):

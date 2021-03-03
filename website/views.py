@@ -65,7 +65,7 @@ def product(request, id):
 
 @csrf_protect
 def order(request):
-    products = Product.objects.all()
+    # products = Product.objects.all()
 
 
     amount = request.POST["amount"]
@@ -84,12 +84,13 @@ def order(request):
 
     order_data = Order(amount=amount, name_on_plate=name_on_plate, frame=frame, first_name=first_name, last_name=last_name, email=email, mobile=mobile, address=address, town=town, city=city, state=state, zip_code=zip_code, transaction_no=transaction_no)
     order_data.save()
-    messages.success(request, 'Your Order Placed Successfully...! Thanks For Order...!')
 
+    messages.success(request, 'Your Order Placed Successfully...! Thanks For Order...!')
+    return redirect("/")
     # messages.success("Your Order Placed Successfully....!")
 
-    context = {'products': products}
-    return render(request, 'index.html', context)
+    # context = {'products': products}
+    # return render(request, 'index.html', context)
 
 
 
