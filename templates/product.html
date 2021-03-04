@@ -86,24 +86,6 @@
 									<h3 style="text-align:left; margin-bottom:30px; color:#6de78c; background-color:#f8f8f8; border-bottom: solid 2px #2c2323;">Shipping At</h3>
 									<form action="/order/" method="post" class="form" id="post-form">
 										{% csrf_token %}
-<!--										{{ f.as_p }}-->
-<!--											<input class="form-control" id="amount"  type="hidden" name="amount" required=""  placeholder="Last Name">-->
-<!--												Rs{% for charector in charectors %}-->
-<!--													{% if forloop.last %}-->
-<!--														{{charector.your_price|add:product.last.base_price}}-->
-<!--													{% endif %}-->
-<!--												{% endfor %}-->
-<!--											</input>-->
-<!--											<input class="form-control" id="name"  type="hidden" name="name_on_plate" required=""  placeholder="Last Name">-->
-<!--												Your Name On Plate:-->
-<!--												<span style="color:#00e58b;">-->
-<!--													{% for charector in charectors %}-->
-<!--													  {% if forloop.last %}-->
-<!--														{{charector.name}}-->
-<!--													  {% endif %}-->
-<!--													{% endfor %}-->
-<!--												</span>-->
-<!--											</input>-->
 											<input class="form-control" id="name" onclick="this.value=''" type="hidden" name="name_on_plate" placeholder="Enter Name On Plate" required="">
 											<input class="form-control" id="amount" type="hidden" name="amount"required="">
 											<input class="form-control" id="frame" type="hidden" name="frame"required="">
@@ -177,15 +159,15 @@
 											</select>
 											<input class="form-control" type="text"  name="zip_code"  required=""  placeholder="Zipcode">
 										</div>
-										<br/>
-										<h3>For placed your Order Pay Your Price on UPI => <br/><br/><span style="color:red;">9561301779@ybl</span></h3>
-										<div class="transaction-input" style="text-align:center;">
-											<input class="form-control"  type="text"  name="transaction_no"  required=""  placeholder="Transaction Number">
-										</div>
+<!--										<br/>-->
+<!--										<h3>For placed your Order Pay Your Price on UPI => <br/><br/><span style="color:red;">9561301779@ybl</span></h3>-->
+<!--										<div class="transaction-input" style="text-align:center;">-->
+<!--											<input class="form-control"  type="text"  name="transaction_no"  required=""  placeholder="Transaction Number">-->
+<!--										</div>-->
 
-										<div class="modal-footer">
-											<h3>Fill The Transaction Number Before Order Placed..</h3>
-										</div>
+<!--										<div class="modal-footer">-->
+<!--											<h3>Fill The Transaction Number Before Order Placed..</h3>-->
+<!--										</div>-->
 										<input type="submit" value="Place Order" class="btn btn-success" id="form-button"  style="width:100%">
 									</form>
 								</div>
@@ -260,27 +242,6 @@ $('#show').on('click',function() {
   window.location.reload(true);
 })
 </script>
-<!--<script type="text/javascript">-->
-<!--	$('#post-form').on('submit', function(event){-->
-<!--		event.preventDefault();-->
-<!--		$('#exampleModalCenter').modal('hide');-->
-<!--		$.ajax({-->
-<!--			url : "", // the endpoint-->
-<!--			type : "POST", // http method-->
-<!--		//	data : { the_post : $('#post-text').val() }, // data sent with the post request-->
-
-<!--			// handle a successful response-->
-<!--			success : function(json) {-->
-<!--			//	$('#post-text').val(''); // remove the value from the input-->
-<!--				console.log(json); // log the returned json to the console-->
-<!--				console.log("success"); // another sanity check-->
-<!--			}-->
-<!--		});-->
-<!--		alert("Your Order Place Successfully... Thank You...!")  // sanity check-->
-
-
-<!--	});-->
-<!--</script>-->
  <script type="text/javascript">
  	function getDisplay(){
 		var a = document.getElementById("post-text").value;

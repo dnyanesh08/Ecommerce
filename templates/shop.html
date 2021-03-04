@@ -18,13 +18,13 @@
 			<div class="women-set1">
 				{% for product in products %}
 				<div class="col-md-3 women-grids wp1 animated wow slideInUp" data-wow-delay=".5s">
-					<a href="product/{{product.id}}"><div class="product-img">
+					<a href="product/{{product.url_name}}"><div class="product-img">
 						<img src="{{product.image.url}}" alt="" />
 
 					</div></a>
 
 <!--					<button data-product="{{product.id}}" data-action="add" class="btn btn-info update-cart"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</button>-->
-					<a href="product/{{product.id}}" class="btn btn-info"><span class="glyphicon glyphicon-shopping-cart"></span> BUY</a>
+					<a href="product/{{product.url_name}}" class="btn btn-info"><span class="glyphicon glyphicon-shopping-cart"></span> BUY</a>
 					<h4>{{product.name}}</h4>
 					<h5>Rs {{product.base_price}}</h5>
 				</div>

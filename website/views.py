@@ -14,16 +14,6 @@ from django.contrib import messages
 # from .forms import OrderForm
 # from . utils import cookieCart, cartData
 
-# def index(request):
-#     products = Product.objects.all()
-#     data = cartData(request)
-#     cartItems = data['cartItems']
-#     order = data['order']
-#     items = data['items']
-#
-#     context = {'items': items, 'order': order, 'products': products, 'cartItems': cartItems}
-#     return render(request, 'index.html', context)
-
 
 def index(request):
     products = Product.objects.all()
@@ -43,8 +33,8 @@ def contact(request):
     return render(request, 'contact.html')
 
 
-def product(request, id):
-    product = Product.objects.filter(id=id)
+def product(request, url_name):
+    product = Product.objects.filter(url_name=url_name)
     print(product)
     if request.method == "POST":
         form = CharectorForm(request.POST)
@@ -80,13 +70,13 @@ def order(request):
     city = request.POST["city"]
     state = request.POST["state"]
     zip_code = request.POST["zip_code"]
-    transaction_no = request.POST["transaction_no"]
+    # transaction_no = request.POST["transaction_no"]
 
-    order_data = Order(amount=amount, name_on_plate=name_on_plate, frame=frame, first_name=first_name, last_name=last_name, email=email, mobile=mobile, address=address, town=town, city=city, state=state, zip_code=zip_code, transaction_no=transaction_no)
+    order_data = Order(amount=amount, name_on_plate=name_on_plate, frame=frame, first_name=first_name, last_name=last_name, email=email, mobile=mobile, address=address, town=town, city=city, state=state, zip_code=zip_code)
     order_data.save()
 
 
-    messages.success(request, 'Your Order Placed Successfully...! Thanks For Order...!')
+    messages.success(request, 'Your Order Placed Successfully. Will Contact You For Purther Process... Thanks For Your Order...!')
     return redirect("/")
     # messages.success("Your Order Placed Successfully....!")
 
