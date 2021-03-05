@@ -125,37 +125,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
 					<ul class="nav navbar-nav ">
 						<li><a href="/" class="hyper "><span>Home</span></a></li>
-<!--						<li class="dropdown">-->
-<!--							<a href="#" class="dropdown-toggle  hyper" data-toggle="dropdown" ><span>Store<b class="caret"></b></span></a>-->
-<!--								<ul class="dropdown-menu multi">-->
-<!--									<div class="row">-->
-<!--										<div class="col-sm-4">-->
-<!--											<ul class="multi-column-dropdown">-->
 
-<!--												<li><a href="women.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Women's Fashion</a></li>-->
-<!--												<li><a href="products.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Men's Fashions</a></li>-->
-<!--												<li><a href="products.html"> <i class="fa fa-angle-right" aria-hidden="true"></i>Kid's Fashion</a></li>-->
-<!--												<li><a href="products.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Daily Needs</a></li>-->
-
-<!--											</ul>-->
-
-<!--										</div>-->
-<!--										<div class="col-sm-4">-->
-<!--											<ul class="multi-column-dropdown">-->
-<!--												<li><a href="products.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Organic Food</a></li>-->
-<!--												<li><a href="products.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Gifts finder</a></li>-->
-<!--												<li><a href="products.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Home Decor</a></li>-->
-<!--												<li><a href="products.html"><i class="fa fa-angle-right" aria-hidden="true"></i>Furnitures</a></li>-->
-
-<!--											</ul>-->
-<!--										</div>-->
-<!--										<div class="col-sm-4 w3l">-->
-<!--											<a href="women.html"><img src="images/menu1.jpg" class="img-responsive" alt=""></a>-->
-<!--										</div>-->
-<!--										<div class="clearfix"></div>-->
-<!--									</div>-->
-<!--								</ul>-->
-<!--						</li>-->
 						<li><a href="/shop.html" class="hyper"><span>Shop</span></a></li>
 				   		<li><a href="/contact.html" class="hyper"><span>Contact Us</span></a></li>
 
@@ -186,7 +156,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				});
 		</script>
 		<div class="col-md-4 search-agileinfo">
-			<form action="#" method="post">
+			<form action="/" method="post">
+				{% csrf_token %}
 				<input type="search" name="Search" placeholder="Search for a Product..." required="">
 				<button type="submit" class="btn btn-default search" aria-label="Left Align">
 					<i class="fa fa-search" aria-hidden="true"> </i>

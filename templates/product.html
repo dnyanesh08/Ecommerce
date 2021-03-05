@@ -40,9 +40,9 @@
 							<div class="form-group mb-2">
 								{{ form.as_p }}
 							</div>
-							<input type="Submit" name="submit" value="Submit & Pay" id="show" class="btn btn-primary mb-2"  style="margin-left: 30px;"/>
+							<input type="Submit" name="submit" value="Submit & Pay" id="show"  class="btn btn-primary mb-2"  style="margin-left: 30px;"/>
 						</form>
-						<br><br><br><br>
+						<br><br>
 						<div class="toshow" id="toshow" style="display:none;" >Your Price :  {% for charector in charectors %}
 								{% if forloop.last %}
 								<span style="color:#f50424;" id="your-price">{{charector.your_price|add:product.last.base_price}}</span>
@@ -240,9 +240,12 @@ localStorage.getItem('show') && $hidden.show();
 
 $('#show').on('click',function() {
   localStorage.setItem('show',true);
-  window.location.reload(true);
+  window.location.reload(false);
 })
 </script>
+ <script type="text/javascript">
+
+ </script>
  <script type="text/javascript">
  	function getDisplay(){
 		var a = document.getElementById("post-text").value;
