@@ -36,21 +36,22 @@ def contact(request):
 def product(request, url_name):
     product = Product.objects.filter(url_name=url_name)
     print(product)
-    if request.method == "POST":
-        form = CharectorForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.save()
-    else:
-        form = CharectorForm()
+    # if request.method == "POST":
+    #     form = CharectorForm(request.POST)
+    #     if form.is_valid():
+    #         post = form.save(commit=False)
+    #         post.save()
+    # else:
+    #     form = CharectorForm()
 
 
 
-    charectors = Charector.objects.all()
+    # charectors = Charector.objects.all()
     # print(charectors)
 
 
-    context = {'product': product, 'form': form, 'charectors': charectors,}
+    # context = {'product': product, 'form': form, 'charectors': charectors,}
+    context = {'product': product}
     return render(request, 'product.html', context)
 
 @csrf_protect

@@ -13,7 +13,8 @@ class CharectorForm(forms.ModelForm):
                 'id': 'post-text',
                 'required': True,
                 'onclick': "this.value=''",
-                'placeholder': 'Enter Your Name On Plate....'
+                'placeholder': 'Enter Your Name On Plate....',
+                'class': 'char-input'
             }),
         }
 

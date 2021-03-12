@@ -2924,7 +2924,7 @@ select[multiple].input-lg {
   }
   .form-inline .form-control {
     display: inline-block;
-    width: 20%;
+    width: 33%;
     vertical-align: middle;
   }
   .form-inline .form-control-static {
