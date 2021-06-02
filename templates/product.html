@@ -36,26 +36,11 @@
 							</ul>
 						</div>
 						<p class="single-price-text">{{prod.desc}} </p>
-						<p>Your price vary according to the characters. </p>
-<!--						<form action="" method="POST" class="form-inline">-->
-<!--							{% csrf_token %}-->
-<!--							<div class="form-group mb-2">-->
-<!--								{{ form.as_p }}-->
-<!--							</div>-->
-<!--							<input type="Submit" name="submit" value="Submit & Pay" id="show"  class="btn btn-primary mb-2"  style="margin-left: 30px;"/>-->
-<!--						</form>-->
-<!--						<br><br>-->
-<!--						<div class="toshow" id="toshow" style="display:none;" >Your Price :  {% for charector in charectors %}-->
-<!--								{% if forloop.last %}-->
-<!--								<span style="color:#f50424;" id="your-price">{{charector.your_price|add:product.last.base_price}}</span>-->
-<!--								<input type="button" value="Pay Now" onclick="getDisplay()" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter" />-->
 
-<!--								{% endif %}-->
-<!--								{% endfor %}-->
-<!--							</div>-->
-<!--					</div>-->
-<!--						<form action="" method="POST" class="form-inline">-->
-<!--							{% csrf_token %}-->
+
+						{% if prod.category.id == 1 %}
+						<p>Your price vary according to the characters. </p>
+
 
 							<input class="form-control" id="char"  type="text"  required=""  placeholder="Enter Your Name On Plate">
 
@@ -65,9 +50,14 @@
 						<div class="toshow" id="toshow" style="display:none;" >Your Price: <span style="color:#f50424;">Rs.</span>
 							<span style="color:#f50424;" id="your-price"> </span>
 							&nbsp;&nbsp;
-							<input type="button" value="Pay Now" onclick="getDisplay()" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter" />
+							<input type="button" value="Buy Now" onclick="getDisplay()" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter" />
 
 						</div>
+						{% else %}
+							<h3>Rs. {{prod.base_price}}</h3>
+						    <input type="button" value="Buy Now" onclick="getDisplay()" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter" />
+						{% endif %}
+
 					</div>
 
 {% endfor %}
@@ -79,23 +69,24 @@
 						  <div class="modal-dialog modal-dialog-centered" role="document">
 							<div class="modal-content">
 							  <div class="modal-header">
+								  {% for prod in product %}
+								    {% if prod.category.id == 1 %}
 								<h3 class="modal-title" >
-<!--									Your Price : Rs {% for charector in charectors %}-->
-<!--											{% if forloop.last %}-->
-<!--												{{charector.your_price|add:product.last.base_price}}-->
-<!--											{% endif %}-->
-<!--										{% endfor %}-->
+
 									Your Price : Rs <span style="color:#00e58b;" id="model-price"> </span>
 								</h3>
 								<h4>Your Name On Plate:
 									<span style="color:#00e58b;" id="model-nop" onclick="this.value=''">
-<!--										{% for charector in charectors %}-->
-<!--										  {% if forloop.last %}-->
-<!--											{{charector.name}}-->
-<!--										  {% endif %}-->
-<!--										{% endfor %}-->
+
 									</span>
 								</h4>
+								  {% else %}
+								  <h3 class="modal-title" >
+
+									Your Price : Rs <span style="color:#00e58b;">{{prod.base_price}} </span>
+									</h3>
+								   {% endif %}
+								  {% endfor %}
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								  <span aria-hidden="true">&times;</span>
 								</button>
@@ -105,12 +96,19 @@
 									<h3 style="text-align:left; margin-bottom:30px; color:#6de78c; background-color:#f8f8f8; border-bottom: solid 2px #2c2323;">Shipping At</h3>
 									<form action="/order/" method="post" class="form" id="post-form">
 										{% csrf_token %}
-											<input class="form-control" id="name" onclick="this.value=''" type="hidden" name="name_on_plate" placeholder="Enter Name On Plate" required="">
-											<input class="form-control" id="amount" type="hidden" name="amount"required="">
-											<input class="form-control" id="frame" type="hidden" name="frame"required="">
-
+										{% for prod in product %}
+										<input class="form-control" id="name" onclick="this.value=''" type="hidden" name="name_on_plate" placeholder="Enter Name On Plate" required="">
+										<input class="form-control" id="frame" type="hidden" name="frame"required="">
+										<input class="form-control" value="{{prod.name}}" type="hidden" name="product_name"required="">
+											{% if prod.category.id == 1 %}
+												<input class="form-control" id="amount" type="hidden" name="amount"required="">
+											{% else %}
+												<input class="form-control" value="{{prod.base_price}}" type="hidden" name="amount"required="">
+											{% endif %}
+										{% endfor %}
 										<br/>
 										<div class="form-group">
+<!--											<input class="form-control" value="{{order.product.name}}" type="hidden" name="product_name"required="">-->
 											<input class="form-control"  type="text"   name="first_name" required=""  placeholder="First Name">
 											<input class="form-control"  type="text"   name="last_name" required=""  placeholder="Last Name">
 											<div class="clearfix"></div>
@@ -178,15 +176,7 @@
 											</select>
 											<input class="form-control" type="text"  name="zip_code"  required=""  placeholder="Zipcode">
 										</div>
-<!--										<br/>-->
-<!--										<h3>For placed your Order Pay Your Price on UPI => <br/><br/><span style="color:red;">9561301779@ybl</span></h3>-->
-<!--										<div class="transaction-input" style="text-align:center;">-->
-<!--											<input class="form-control"  type="text"  name="transaction_no"  required=""  placeholder="Transaction Number">-->
-<!--										</div>-->
 
-<!--										<div class="modal-footer">-->
-<!--											<h3>Fill The Transaction Number Before Order Placed..</h3>-->
-<!--										</div>-->
 										<input type="submit" value="Place Order" class="btn btn-success" id="form-button"  style="width:100%">
 									</form>
 								</div>
@@ -251,16 +241,7 @@
 {% endfor %}
 		</div>
 	</div>
-<!--<script type="text/javascript">-->
-<!-- var $hidden = $('#toshow');-->
 
-<!--localStorage.getItem('show') && $hidden.show();-->
-
-<!--$('#show').on('click',function() {-->
-<!--  localStorage.setItem('show',true);-->
-<!--  window.location.reload(false);-->
-<!--})-->
-<!--</script>-->
  <script type="text/javascript">
 	 function charCal(){
 	 	var $hidden = $('#toshow');
@@ -271,8 +252,6 @@
 		localStorage.getItem('show') && $hidden.show();
 
 	}
-
-
  </script>
  <script type="text/javascript">
  	function getDisplay(){
@@ -288,9 +267,4 @@
 
  </script>
 
-<!-- <script type="text/javascript">-->
-<!-- function form-button(){-->
-<!--	alert("Your Order Placed Successfully...!")-->
-<!--	}-->
-<!-- </script>-->
  {% endblock %}

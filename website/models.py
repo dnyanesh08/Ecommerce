@@ -3,6 +3,14 @@ from django.contrib.auth.models import User, auth
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+
 class Product(models.Model):
     name = models.CharField(max_length=50)
     base_price = models.IntegerField(null=True)
@@ -11,7 +19,8 @@ class Product(models.Model):
     image = models.ImageField()
     desc = models.TextField()
     type = models.CharField(max_length=50)
-    category = models.CharField(max_length=50)
+    # category = models.CharField(max_length=50)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -51,8 +60,9 @@ class Order(models.Model):
     # transaction_no = models.CharField(max_length=500, null=True, blank=True)
     frame = models.CharField(max_length=50, null=True, blank=True)
     date_ordered = models.DateTimeField(auto_now=True)
+    product_name = models.CharField(max_length=50, null=True, blank=True)
     def __str__(self):
-        return self.name_on_plate
+        return self.first_name
 
 
 

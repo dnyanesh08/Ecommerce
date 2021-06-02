@@ -56,7 +56,7 @@ def product(request, url_name):
 
 @csrf_protect
 def order(request):
-    # products = Product.objects.all()
+    products = Product.objects.all()
 
 
     amount = request.POST["amount"]
@@ -71,9 +71,10 @@ def order(request):
     city = request.POST["city"]
     state = request.POST["state"]
     zip_code = request.POST["zip_code"]
+    product_name = request.POST["product_name"]
     # transaction_no = request.POST["transaction_no"]
 
-    order_data = Order(amount=amount, name_on_plate=name_on_plate, frame=frame, first_name=first_name, last_name=last_name, email=email, mobile=mobile, address=address, town=town, city=city, state=state, zip_code=zip_code)
+    order_data = Order(amount=amount, product_name=product_name, name_on_plate=name_on_plate, frame=frame, first_name=first_name, last_name=last_name, email=email, mobile=mobile, address=address, town=town, city=city, state=state, zip_code=zip_code)
     order_data.save()
 
 
